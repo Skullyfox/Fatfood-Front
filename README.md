@@ -1,5 +1,5 @@
 # FatFood | Frontend
-![FatFood Logo](src/assets/img/logo-small.png)
+![FatFood Logo](src/assets/img/icon.png)
 
 ## Project setup
 ```
