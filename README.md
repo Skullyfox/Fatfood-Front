@@ -1,4 +1,5 @@
-# client
+# FatFood | Frontend
+![FatFood Logo](src/assets/img/logo-small.png)
 
 ## Project setup
 ```
