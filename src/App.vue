@@ -8,6 +8,19 @@ export default {
   data() {
     return {
       theme: 'default',
+      isAuth: false,
+      authData: {}
+    }
+  },
+  methods: {
+    Auth(id, name, avatar) {
+      this.authData = {
+        id: id,
+        name: name,
+        avatar: avatar,
+      }
+      this.isAuth = true;
+      this.$router.push('dashboard');
     }
   }
 }
@@ -15,8 +28,8 @@ export default {
 
 <template :class="theme">
   <div id="app" :class="theme">
-    <NavBar/>
-    <router-view/>
+    <NavBar :isAuth="isAuth" :authData="authData" />
+    <router-view @authentified="Auth" :authData="authData"/>
   </div>
 </template>
 
