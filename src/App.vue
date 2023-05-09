@@ -13,11 +13,12 @@ export default {
     }
   },
   methods: {
-    Auth(id, name, avatar) {
+    Auth(id, name, avatar, jwt) {
       this.authData = {
         id: id,
         name: name,
         avatar: avatar,
+        token: jwt
       }
       this.isAuth = true;
       this.$router.push('dashboard');
