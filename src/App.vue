@@ -1,5 +1,6 @@
 <script>
 import NavBar from './components/NavBar.vue';
+import axios from 'axios';
 
 export default {
   components: {
@@ -12,6 +13,27 @@ export default {
       authData: {}
     }
   },
+  beforeMount() {
+    axios.get('https://fatfood-api.creartcom.fr/'); //Preload free hosting from Railway to be sure the API is available for requests
+    const dataToGet = ['id', 'name', 'avatar', 'jwtToken'];
+    const {id, name, avatar, jwtToken} = dataToGet.reduce((acc, key) => {
+      acc[key] = localStorage.getItem(key);
+      return acc;
+    }, {});
+
+    if (id && name && avatar && jwtToken) {
+      this.isAuth = true;
+      this.authData = {
+        id: id,
+        name: name,
+        avatar: avatar,
+        token: jwtToken
+      }
+    } else {
+      // TODO: redirect to login page
+      return;
+    }
+  },
   methods: {
     Auth(id, name, avatar, jwt) {
       this.authData = {
@@ -20,8 +42,20 @@ export default {
         avatar: avatar,
         token: jwt
       }
+      localStorage.setItem('id', id);
+      localStorage.setItem('name', name);
+      localStorage.setItem('avatar', avatar);
+      localStorage.setItem('jwtToken', jwt);
       this.isAuth = true;
       this.$router.push('dashboard');
+    },
+    Logout() {
+      localStorage.removeItem('id');
+      localStorage.removeItem('name');
+      localStorage.removeItem('avatar');
+      localStorage.removeItem('jwtToken');
+      this.isAuth = false;
+      this.$router.push('/');
     }
   }
 }
@@ -29,8 +63,13 @@ export default {
 
 <template :class="theme">
   <div id="app" :class="theme">
-    <NavBar :isAuth="isAuth" :authData="authData" />
-    <router-view @authentified="Auth" :authData="authData"/>
+    <NavBar 
+      @logout="Logout"
+      :isAuth="isAuth" 
+      :authData="authData" />
+    <router-view 
+      @authentified="Auth"
+      :authData="authData"/>
   </div>
 </template>
 
@@ -41,15 +80,19 @@ export default {
   $themes: (
     "default": (
       primary: rgb(249, 177, 71),
+      primaryShadow: rgba(249, 177, 71, .3),
       secondary: rgb(118, 94, 61),
+      alert: rgb(229, 80, 57),
       mode: rgb(250, 250, 250),
       modeShadow: rgba(250, 250, 250, .3),
       modeInvert: rgb(43, 45, 66),
       modeInvertShadow: rgba(43, 45, 66, .3)
     ),
     "default-dark": (
-      primary: rgb(249, 177, 71),
-      secondary: rgb(118, 94, 61),
+      primary: rgb(118, 94, 61),
+      primaryShadow: rgba(118, 94, 61, .3),
+      secondary: rgb(249, 177, 71),
+      alert: rgb(229, 80, 57),
       mode: rgb(43, 45, 66),
       modeShadow: rgba(43, 45, 66, .3),
       modeInvert: rgb(250, 250, 250),
@@ -61,7 +104,9 @@ export default {
     $theme: map-get($themes, $theme-name); 
 
     --primary-color: #{map-get($theme, primary)};
+    --primary-shadow-color: #{map-get($theme, primaryShadow)};
     --secondary-color: #{map-get($theme, secondary)};
+    --alert-color: #{map-get($theme, alert)};
     --mode-color: #{map-get($theme, mode)};
     --mode-shadow-color: #{map-get($theme, modeShadow)};
     --mode-invert-color: #{map-get($theme, modeInvert)};
@@ -73,6 +118,7 @@ export default {
     --secondary-font : 'Inter', sans-serif;
     --title-size: 2.3em;
     --subtitle-size: 1.8em;
+    --variant-size: 1.3em;
     --text-size: 1em;
     --light-weight: 300;
     --medium-weight: 500;

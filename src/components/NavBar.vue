@@ -1,6 +1,7 @@
 <script>
   export default {
     name: 'NavBar',
+    emits: ["logout"],
     props: {
       isAuth: Boolean,
       authData: Object,
@@ -30,6 +31,9 @@
           this.cartStatus = !this.cartStatus;
         }
         this.accountContainerStatus = !this.accountContainerStatus;
+      },
+      logout() {
+        this.$emit("logout");
       }
     }
   };
@@ -78,6 +82,9 @@
         </li>
         <li>
           <router-link to="dashboard" @click="accountContainer">Mes recettes</router-link>
+        </li>
+        <li class="logout">
+          <router-link to="dashboard" @click="logout(), accountContainer()">Déconnexion</router-link>
         </li>
       </ul>
     </div>
@@ -239,7 +246,7 @@
     //top: calc(100px - 100vh);
     top: -100vh;
     right: var(--center-padding);
-    height: 200px;
+    height: 250px;
     width: 300px;
     background-color: var(--primary-color);
     transition: all .8s ease-in-out;
@@ -255,6 +262,11 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      .logout {
+        a{
+         color: var(--alert-color);
+        }
+      }
     }
     h2{
       color: var(--mode-color);

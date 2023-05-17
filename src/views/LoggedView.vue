@@ -26,7 +26,6 @@ export default {
                 },
             })
                 .then(response => {
-                    console.log(response.data);
                     const { id, avatar, username, discriminator, email } = response.data;
                     this.name = username;
                     this.discriminator = discriminator;
