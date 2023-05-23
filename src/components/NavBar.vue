@@ -45,10 +45,10 @@
           <i id="mobileMenuToggler" 
             :class="{'fas fa-bars': !mobileMenuStatus,'fas fa-close': mobileMenuStatus }" 
             @click="mobileMenu"></i>
-          <div class="mobile-container">
-          <router-link to="/">Accueil</router-link>
-          <router-link to="/about">{{ isAuth }}</router-link>
-          <router-link to="/product">Product</router-link>
+          <div class="desktop-container">
+            <router-link to="/">Accueil</router-link>
+            <router-link to="/about">{{ isAuth }}</router-link>
+            <router-link to="/product">Product</router-link>
           </div>
         </div>
         <div class="navbar-logo">
@@ -74,24 +74,50 @@
         <li>
           <router-link to="dashboard" @click="accountContainer">Dashboard</router-link>
         </li>
-        <li>
-          <router-link to="dashboard" @click="accountContainer">Données personnelles</router-link>
-        </li>
-        <li>
-          <router-link to="dashboard" @click="accountContainer">Historique des commandes</router-link>
-        </li>
-        <li>
-          <router-link to="dashboard" @click="accountContainer">Mes recettes</router-link>
-        </li>
         <li class="logout">
           <router-link to="dashboard" @click="logout(), accountContainer()">Déconnexion</router-link>
         </li>
       </ul>
     </div>
     <div class="cart-container" :class="{'active': cartStatus}">
-      <div class="container-title">
-        <h2>Votre panier</h2>
-      </div>
+      <h2>Votre panier</h2>
+      <p>Panier Vide</p>
+    </div>
+    <div 
+      class="mobile-nav"
+      :class="{active : mobileMenuStatus}">
+      <ul>
+        <li>
+          <h2>
+            <router-link to="/" @click="mobileMenu">Accueil</router-link>
+          </h2>
+        </li>
+        <li>
+          <h2>
+            <router-link to="/about" @click="mobileMenu">{{ isAuth }}</router-link>
+          </h2>
+        </li>
+        <li>
+          <h2>
+            <router-link to="/product" @click="mobileMenu">Product</router-link>
+          </h2>
+        </li>
+        <li v-if="isAuth">
+          <h2>
+            <router-link to="/dashboard" @click="mobileMenu">Dashboard</router-link>
+          </h2>
+        </li>
+        <li v-if="isAuth">
+          <h2>
+            <router-link class="logout" to="/" @click="logout(), mobileMenu()">Déconnexion</router-link>
+          </h2>
+        </li>
+        <li v-if="!isAuth">
+          <h2>
+            <a :href="discordAuthLink">Se connecter</a>
+          </h2>
+        </li>
+      </ul> 
     </div>
 </template>
 
@@ -115,7 +141,6 @@
     .navbar-logo {
       width: 100%;
       @media screen and (max-width: 1024px) {
-          padding: 40px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -130,15 +155,14 @@
           height: 60px;
           transform: translateY(100%);
           @media screen and (max-width: 1024px) {
-            transform: translateY(0);
+            display: none;
           }
           @media screen and (max-width: 768px) {
-            display: none;
           }
         }
         .navbar-mobile-logo {
           display: none;
-          @media screen and (max-width: 768px) {
+          @media screen and (max-width: 1024px) {
             display: block;
             height: 60px;
           }
@@ -157,7 +181,7 @@
         #mobileMenuToggler {
           display: block;
         }
-        .mobile-container {
+        .desktop-container {
           display: none;
         }
       }
@@ -195,9 +219,6 @@
         border-radius: 50%;
         background-color: var(--secondary-color);
         border: 2px solid transparent;
-        @media screen and (max-width: 1024px) {
-          margin-left: 0;
-        }
         &:hover{
           cursor: pointer;
         }
@@ -214,12 +235,14 @@
     }
   }
   .cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     z-index: 800;
     padding: 30px 10px;
     position: fixed;
     top: -100vh;
     right: var(--center-padding);
-    height: 400px;
     width: 300px;
     background-color: var(--secondary-color);
     transition: all .8s ease-in-out;
@@ -227,7 +250,7 @@
     &.active {
       top: 100px;
     }
-    h2{
+    h2, p{
       color: var(--mode-color);
     }
     @media screen and (max-width: 1024px) {
@@ -246,7 +269,6 @@
     //top: calc(100px - 100vh);
     top: -100vh;
     right: var(--center-padding);
-    height: 250px;
     width: 300px;
     background-color: var(--primary-color);
     transition: all .8s ease-in-out;
@@ -260,7 +282,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 20px;
       align-items: center;
       .logout {
         a{
@@ -278,6 +300,32 @@
     @media screen and (max-width: 768px) {
       right: 0;
       width: 100%;
+    }
+  }
+  .mobile-nav{
+    z-index: 998;
+    height: calc(100vh - 100px);
+    top: -100vh;
+    width: 100%;
+    background-color: var(--primary-color);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all .8s ease-in-out;
+    &.active{
+      top: 100px;
+    }
+    ul{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+      .logout{
+        color: var(--alert-color);
+      }
     }
   }
 </style>

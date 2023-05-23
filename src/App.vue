@@ -1,6 +1,6 @@
 <script>
 import NavBar from './components/NavBar.vue';
-import axios from 'axios';
+//import axios from 'axios';
 
 export default {
   components: {
@@ -14,20 +14,28 @@ export default {
     }
   },
   beforeMount() {
-    axios.get('https://fatfood-api.creartcom.fr/'); //Preload free hosting from Railway to be sure the API is available for requests
-    const dataToGet = ['id', 'name', 'avatar', 'jwtToken'];
-    const {id, name, avatar, jwtToken} = dataToGet.reduce((acc, key) => {
+    //axios.get('https://fatfood-api.creartcom.fr/'); //Preload free hosting from Railway to be sure the API is available for requests
+    const dataToGet = ['id', 'name', 'avatar', 'jwtToken', 'email', 'lastConnection'];
+    const {id, name, avatar, jwtToken, email, lastConnection} = dataToGet.reduce((acc, key) => {
       acc[key] = localStorage.getItem(key);
       return acc;
     }, {});
 
     if (id && name && avatar && jwtToken) {
-      this.isAuth = true;
-      this.authData = {
-        id: id,
-        name: name,
-        avatar: avatar,
-        token: jwtToken
+      let today = Date.now();
+      let msElapsed = today - lastConnection;
+      let hoursElapsed = Math.round(msElapsed / (1000 * 60 * 60));
+      if(Math.floor(hoursElapsed / 24) < 2){
+        this.isAuth = true;
+        this.authData = {
+          id: id,
+          name: name,
+          avatar: avatar,
+          token: jwtToken,
+          email: email
+        } 
+      } else {
+          this.Logout();
       }
     } else {
       // TODO: redirect to login page
@@ -35,17 +43,20 @@ export default {
     }
   },
   methods: {
-    Auth(id, name, avatar, jwt) {
+    Auth(id, name, avatar, email, jwt) {
       this.authData = {
         id: id,
         name: name,
         avatar: avatar,
+        email: email,
         token: jwt
       }
       localStorage.setItem('id', id);
       localStorage.setItem('name', name);
       localStorage.setItem('avatar', avatar);
       localStorage.setItem('jwtToken', jwt);
+      localStorage.setItem('email', email);
+      localStorage.setItem('lastConnection', Date.now());
       this.isAuth = true;
       this.$router.push('dashboard');
     },
@@ -54,6 +65,8 @@ export default {
       localStorage.removeItem('name');
       localStorage.removeItem('avatar');
       localStorage.removeItem('jwtToken');
+      localStorage.removeItem('email');
+      localStorage.removeItem('lastConnection');
       this.isAuth = false;
       this.$router.push('/');
     }

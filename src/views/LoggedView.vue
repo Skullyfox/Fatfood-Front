@@ -52,7 +52,7 @@ export default {
                         .request(config)
                         .then((response) => {
                             const { jwt } = response.data;
-                            this.$emit('authentified', this.id, this.name, this.avatar, jwt);
+                            this.$emit('authentified', this.id, this.name, this.avatar, email, jwt);
                         })
                         .catch((error) => {
                             let { response } = error;
@@ -75,7 +75,7 @@ export default {
                                     .request(config)
                                     .then((response) => {
                                         const { jwt } = response.data;
-                                        this.$emit('authentified', this.id, this.name, this.avatar, jwt);
+                                        this.$emit('authentified', this.id, this.name, this.avatar, email, jwt);
                                     })
                                     .catch((error) => {
                                         console.log(error);

@@ -82,7 +82,7 @@
     },
     async mounted() {
       try {
-        const response = await axios.get('https://fatfood-api.creartcom.fr/api/ingredients?populate=*');
+        const response = process.env.NODE_ENV !== 'production'  ? await axios.get('http://127.0.0.1:5200/api/ingredients?populate=*') : await axios.get('https://fatfood-api.creartcom.fr/api/ingredients?populate=*');
         this.ingredients = response.data.data;
       } catch (error) {
         console.error(error);
