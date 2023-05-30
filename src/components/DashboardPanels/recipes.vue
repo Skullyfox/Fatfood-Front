@@ -7,7 +7,7 @@
         props : {
             authData : Object
         },
-        methods : {}
+        methods : {},
     }
 </script>
 

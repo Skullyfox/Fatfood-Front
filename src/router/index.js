@@ -5,6 +5,8 @@ import LoggedView from '@/views/LoggedView.vue'
 import DashboardView from '@/views/DashboardView.vue'
 import AboutView from '@/views/AboutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import RecipesView from '@/views/RecipesView.vue'
+import RecipeView from '@/views/RecipeView.vue'
 
 const routes = [
   {
@@ -21,6 +23,16 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: DashboardView
+  },
+  {
+    path: '/recettes',
+    name: 'recipes',
+    component: RecipesView
+  },
+  {
+    path: '/recettes/:id',
+    name: 'recipe',
+    component: RecipeView
   },
   {
     path: '/product',

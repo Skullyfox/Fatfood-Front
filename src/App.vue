@@ -1,10 +1,12 @@
 <script>
 import NavBar from './components/NavBar.vue';
+import Footer from './components/Footer.vue';
 //import axios from 'axios';
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    Footer,
   },
   data() {
     return {
@@ -83,6 +85,7 @@ export default {
     <router-view 
       @authentified="Auth"
       :authData="authData"/>
+    <Footer />
   </div>
 </template>
 
@@ -169,6 +172,9 @@ export default {
   h2 {
     font-size: var(--subtitle-size);
     font-weight: var(--medium-weight);
+  }
+  h3 {
+    font-size: var(--variant-size);
   }
 
   #app {

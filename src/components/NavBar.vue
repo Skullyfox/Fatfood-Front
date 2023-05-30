@@ -47,7 +47,13 @@
             @click="mobileMenu"></i>
           <div class="desktop-container">
             <router-link to="/">Accueil</router-link>
-            <router-link to="/about">{{ isAuth }}</router-link>
+            <div class="dropdown">
+              <p class="dropdownLabel">Recettes</p>
+              <div class="dropdownContainer">
+                <router-link to="/">Créer ton Burger</router-link>
+                <router-link to="/recettes">Recettes Tendances</router-link>
+              </div>
+            </div>
             <router-link to="/product">Product</router-link>
           </div>
         </div>
@@ -129,7 +135,7 @@
     grid-template-columns: 2fr 1fr 2fr;
     height: 100px;
     padding: 0 var(--center-padding);
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
     background: var(--mode-color);
     @media screen and (max-width: 1024px) {
       width: calc(100% - 80px);
@@ -300,6 +306,43 @@
     @media screen and (max-width: 768px) {
       right: 0;
       width: 100%;
+    }
+  }
+  .desktop-container{
+    display: flex;
+
+    .dropdown{
+      position: relative;
+      .dropdownContainer{
+        display: none;
+      }
+      .dropdownLabel{
+        font-weight: var(--medium-weight);
+        font-size: 18px;
+        margin: 0 20px;
+        &:hover{
+          cursor: default;
+        }
+      }
+      &:hover .dropdownContainer{
+        background-color: var(--mode-color);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        transform: translateX(-25%);
+        a{
+          padding: 20px 0;
+          width: 100%;
+          margin: 0;
+        }
+        a:hover {
+          background-color: #ededed;
+        }
+      }
     }
   }
   .mobile-nav{
