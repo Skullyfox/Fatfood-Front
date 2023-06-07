@@ -64,12 +64,18 @@
 
 <script>
 import TrendRecipesList from '@/components/TrendRecipesList.vue';
+import { useHead } from '@vueuse/head';
 
 export default {
   name: 'HomeView',
   components: {
     TrendRecipesList,
   },
+  mounted(){
+    useHead({
+      title: 'Accueil | Fatfood',
+    })
+  }
 }
 </script>
 

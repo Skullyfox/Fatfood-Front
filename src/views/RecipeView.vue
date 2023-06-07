@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { useHead } from '@vueuse/head';
   export default {
     name: 'RecipeView',
     components: {},
@@ -13,6 +14,9 @@ import axios from 'axios';
         try {
             const response = process.env.NODE_ENV !== 'production' ? await axios.get(`http://127.0.0.1:5200/api/recipes/${this.id}?populate=*`) : await axios.get(`https://fatfood-api.creartcom.fr/api/recipes/${this.id}?populate=*`);
             this.recipe = await response.data.data.attributes;
+            useHead({
+            title: `${this.recipe.name} | Fatfood`,
+            }),
             console.log(this.recipe);
         } catch (error) {
             console.error(error);

@@ -9,10 +9,16 @@
   </template>
   
   <script>
+  import { useHead } from '@vueuse/head';
   
   export default {
     name: 'NotFoundView',
-    components: {}
+    components: {},
+    mounted(){
+      useHead({
+        title: 'Page inexistante | Fatfood',
+      })
+    }
   }
   </script>
   

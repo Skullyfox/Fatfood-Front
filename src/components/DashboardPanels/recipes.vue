@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { useHead } from '@vueuse/head';
 
     export default {
         name: "recipesDashboard",
@@ -13,6 +14,9 @@ import axios from "axios";
         },
         methods : {},
         async mounted() {
+            useHead({
+            title: 'Mes Recettes | Fatfood',
+            })
             try {
                 const response = process.env.NODE_ENV !== 'production' 
                     ? await axios.get('http://127.0.0.1:5200/api/users/me?populate=*', {

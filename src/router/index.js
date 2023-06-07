@@ -8,6 +8,7 @@ import NotFoundView from '@/views/NotFoundView.vue'
 import RecipesView from '@/views/RecipesView.vue'
 import RecipeView from '@/views/RecipeView.vue'
 import CreationView from '@/views/CreationView.vue'
+import ConditionsView from '@/views/ConditionsView.vue'
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     path: '/create',
     name: 'create',
     component: CreationView
+  },
+  {
+    path: '/conditionsdevente',
+    name: 'conditionsdevente',
+    component: ConditionsView
   },
   {
     path: '/:pathMatch(.*)*',

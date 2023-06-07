@@ -54,7 +54,7 @@
                 <router-link to="/recettes">Recettes Tendances</router-link>
               </div>
             </div>
-            <router-link to="/product">Product</router-link>
+            <router-link to="/about">En Savoir Plus</router-link>
           </div>
         </div>
         <div class="navbar-logo">

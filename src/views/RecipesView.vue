@@ -1,11 +1,17 @@
 <script>
 import RecipesList from "@/components/RecipesList.vue";
+import { useHead } from '@vueuse/head';
 
   export default {
     name: 'RecipesView',
     components: {
         RecipesList
     },
+    mounted(){
+      useHead({
+        title: 'Recettes Tendances | Fatfood',
+      })
+    }
   }
 </script>
 

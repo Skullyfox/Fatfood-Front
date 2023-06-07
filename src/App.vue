@@ -1,6 +1,10 @@
 <script>
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
+import { useFavicon } from '@vueuse/core'
+
+const icon = useFavicon();
+icon.value = '@/assets/img/icon.png';
 //import axios from 'axios';
 
 export default {

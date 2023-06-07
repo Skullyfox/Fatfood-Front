@@ -2,6 +2,7 @@
 import personnalDashboard from '../components/DashboardPanels/personnal.vue';
 import invoicesDashboard from '../components/DashboardPanels/invoices.vue';
 import recipesDashboard from '../components/DashboardPanels/recipes.vue';
+import { useHead } from '@vueuse/head';
 
     export default {
         data() {
@@ -24,6 +25,11 @@ import recipesDashboard from '../components/DashboardPanels/recipes.vue';
             showActive(panelName){
                 return panelName === this.activePanel;
             }
+        },
+        mounted() {
+            useHead({
+            title: 'Accueil | Fatfood',
+            })
         }
     }
 </script>

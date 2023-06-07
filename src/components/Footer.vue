@@ -2,7 +2,11 @@
     export default {
         name: "footerComponent",
         data() {
-            return{}
+            return{
+                discordAuthLink: process.env.NODE_ENV !== 'production' 
+                    ? "https://discord.com/api/oauth2/authorize?client_id=1097787484622041129&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Flogged&response_type=token&scope=identify%20guilds" 
+                    :"https://discord.com/api/oauth2/authorize?client_id=1097787484622041129&redirect_uri=https%3A%2F%2Ffatfood-front.vercel.app%2Flogged&response_type=token&scope=identify%20email",
+            }
         },
         methods : {}
     }
@@ -16,10 +20,10 @@
                     <router-link to="/">Accueil</router-link>
                 </li>
                 <li>
-                    <router-link to="/">Création de burger</router-link>
+                    <router-link to="/create">Création de burger</router-link>
                 </li>
                 <li>
-                    <router-link to="/">Tendances de la communauté</router-link>
+                    <router-link to="/recettes">Tendances de la communauté</router-link>
                 </li>
             </ul>
         </div>
@@ -29,10 +33,10 @@
         <div class="right">
             <ul>
                 <li>
-                    <router-link to="/">Se connecter</router-link>
+                    <router-link :to="discordAuthLink">Se connecter</router-link>
                 </li>
                 <li>
-                    <router-link to="/">Conditions générales de vente</router-link>
+                    <router-link to="/conditionsdevente">Conditions générales de vente</router-link>
                 </li>
                 <li>
                     <router-link to="/">Mentions légales</router-link>

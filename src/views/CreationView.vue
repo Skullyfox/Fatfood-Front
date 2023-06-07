@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { useHead } from '@vueuse/head';
 
 export default {
     name: 'CreationView',
@@ -11,6 +12,9 @@ export default {
         }
     },
     async mounted() {
+        useHead({
+        title: 'Création | Fatfood',
+        })
       try {
         const url = process.env.NODE_ENV !== 'production'  ? 'http://127.0.0.1:5200/api' : 'https://fatfood-api.creartcom.fr/api';
         const response = await axios.get(`${url}/ingredients?populate=*`);

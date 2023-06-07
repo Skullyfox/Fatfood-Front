@@ -1,4 +1,5 @@
 <script>
+import { useHead } from '@vueuse/head';
     export default {
         name: "personnalDashboard",
         data() {
@@ -7,7 +8,12 @@
         props : {
             authData : Object
         },
-        methods : {}
+        methods : {},
+        mounted() {
+            useHead({
+            title: 'Mon Compte | Fatfood',
+            })
+        }
     }
 </script>
 
