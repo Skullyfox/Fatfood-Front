@@ -20,10 +20,8 @@ import recipesDashboard from '../components/DashboardPanels/recipes.vue';
         methods : {
             changeView(panelName) {
                 this.activePanel = panelName;
-                console.log(this.activePanel);
             },
             showActive(panelName){
-                console.log(panelName === this.activePanel)
                 return panelName === this.activePanel;
             }
         }
@@ -80,7 +78,7 @@ import recipesDashboard from '../components/DashboardPanels/recipes.vue';
     .Container{
         display: grid;
         grid-template-columns: minmax(300px, 1fr) minmax(725px, 2fr);
-        height: 100vh;
+        min-height: 100vh;
         .dashboard-navigation{
             display: flex;
             flex-direction: column;

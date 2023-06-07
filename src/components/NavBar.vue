@@ -50,7 +50,7 @@
             <div class="dropdown">
               <p class="dropdownLabel">Recettes</p>
               <div class="dropdownContainer">
-                <router-link to="/">Créer ton Burger</router-link>
+                <router-link to="/create">Créer ton Burger</router-link>
                 <router-link to="/recettes">Recettes Tendances</router-link>
               </div>
             </div>

@@ -7,6 +7,7 @@ import AboutView from '@/views/AboutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import RecipesView from '@/views/RecipesView.vue'
 import RecipeView from '@/views/RecipeView.vue'
+import CreationView from '@/views/CreationView.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: AboutView
+  },
+  {
+    path: '/create',
+    name: 'create',
+    component: CreationView
   },
   {
     path: '/:pathMatch(.*)*',
