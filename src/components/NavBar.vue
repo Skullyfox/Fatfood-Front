@@ -330,7 +330,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
         width: 250px;
         transform: translateX(-25%);

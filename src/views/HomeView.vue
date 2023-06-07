@@ -64,11 +64,12 @@
 
 <script>
 import TrendRecipesList from '@/components/TrendRecipesList.vue';
+
 export default {
   name: 'HomeView',
   components: {
     TrendRecipesList,
-  }
+  },
 }
 </script>
 

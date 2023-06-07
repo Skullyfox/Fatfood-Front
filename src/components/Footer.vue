@@ -74,11 +74,11 @@
                 display: none;
             }
             display: flex;
-            justify-content: start;
+            justify-content: flex-start;
             align-items: center;
             ul{
                 li{
-                    text-align: start;
+                    text-align: flex-start;
                 }
             }
         }
@@ -98,11 +98,11 @@
                 display: none;
             }
             display: flex;
-            justify-content: end;
+            justify-content: flex-end;
             align-items: center;
             ul{
                 li{
-                    text-align: end;
+                    text-align: flex-end;
                 }
             }
         }

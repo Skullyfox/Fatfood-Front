@@ -117,7 +117,7 @@ import recipesDashboard from '../components/DashboardPanels/recipes.vue';
         .dashboard-view{
             display: flex;
             flex-direction: column;
-            align-items: start;
+            align-items: flex-start;
             padding: 250px 40px 0 20px ;
         }
     }
