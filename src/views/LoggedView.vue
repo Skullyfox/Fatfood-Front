@@ -6,9 +6,8 @@ export default {
     name: "LoggedView",
     data() {
         return {
-            id: "",
+            discordId: "",
             name: "",
-            discriminator: "",
             avatar: "",
         }
     },
@@ -26,14 +25,13 @@ export default {
                 },
             })
                 .then(response => {
-                    const { id, avatar, username, discriminator, email } = response.data;
+                    const { id, avatar, username, email } = response.data;
                     this.name = username;
-                    this.discriminator = discriminator;
                     this.avatar = `https://cdn.discordapp.com/avatars/${id}/${avatar}.webp`;
-                    this.id = id;
-                    let APIUrl = process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:5200' : 'https://fatfood-api.creartcom.fr'
+                    this.discordId = id;
+                    let APIUrl = process.env.NODE_ENV !== 'production' ? 'http://localhost:5200' : 'https://fatfood-api.creartcom.fr'
                     let data = qs.stringify({
-                        password: `${id}${username}`,
+                        password: `${id}${username.charAt(0).toUpperCase() + username.slice(1)}`,
                         email: email,
                         username: username,
                         avatar: `https://cdn.discordapp.com/avatars/${id}/${avatar}.webp`,
@@ -52,19 +50,21 @@ export default {
                         .request(config)
                         .then((response) => {
                             const { jwt } = response.data;
-                            this.$emit('authentified', this.id, this.name, this.avatar, email, jwt);
+                            const { id } = response.data.user;
+                            this.$emit('authentified', id, this.discordId, this.name, this.avatar, email, jwt);
                         })
                         .catch((error) => {
                             let { response } = error;
                             if (response.data.error.status === 400) {
+                                console.log(`${id}${username.charAt(0).toUpperCase() + username.slice(1)}`);
+                                console.log(`${email}`);
                                 let data = qs.stringify({
-                                    password: `${id}${username}`,
+                                    password: `${id}${username.charAt(0).toUpperCase() + username.slice(1)}`,
                                     identifier: `${email}`,
                                 });
 
                                 let config = {
                                     method: "post",
-                                    maxBodyLength: Infinity,
                                     url: `${APIUrl}/api/auth/local`,
                                     headers: {
                                         "Content-Type": "application/x-www-form-urlencoded",
@@ -75,7 +75,8 @@ export default {
                                     .request(config)
                                     .then((response) => {
                                         const { jwt } = response.data;
-                                        this.$emit('authentified', this.id, this.name, this.avatar, email, jwt);
+                                        const { id } = response.data.user;
+                                        this.$emit('authentified', id, this.discordId, this.name, this.avatar, email, jwt);
                                     })
                                     .catch((error) => {
                                         console.log(error);

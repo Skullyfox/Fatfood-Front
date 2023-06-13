@@ -21,13 +21,13 @@ export default {
   },
   beforeMount() {
     //axios.get('https://fatfood-api.creartcom.fr/'); //Preload free hosting from Railway to be sure the API is available for requests
-    const dataToGet = ['id', 'name', 'avatar', 'jwtToken', 'email', 'lastConnection'];
-    const {id, name, avatar, jwtToken, email, lastConnection} = dataToGet.reduce((acc, key) => {
+    const dataToGet = ['id', 'discordId', 'name', 'avatar', 'jwtToken', 'email', 'lastConnection'];
+    const {id, discordId, name, avatar, jwtToken, email, lastConnection} = dataToGet.reduce((acc, key) => {
       acc[key] = localStorage.getItem(key);
       return acc;
     }, {});
 
-    if (id && name && avatar && jwtToken) {
+    if (id && discordId && name && avatar && jwtToken) {
       let today = Date.now();
       let msElapsed = today - lastConnection;
       let hoursElapsed = Math.round(msElapsed / (1000 * 60 * 60));
@@ -35,6 +35,7 @@ export default {
         this.isAuth = true;
         this.authData = {
           id: id,
+          discordId: discordId,
           name: name,
           avatar: avatar,
           token: jwtToken,
@@ -49,15 +50,17 @@ export default {
     }
   },
   methods: {
-    Auth(id, name, avatar, email, jwt) {
+    Auth(id, discordId, name, avatar, email, jwt) {
       this.authData = {
         id: id,
+        discordId: discordId,
         name: name,
         avatar: avatar,
         email: email,
         token: jwt
       }
       localStorage.setItem('id', id);
+      localStorage.setItem('discordId', discordId);
       localStorage.setItem('name', name);
       localStorage.setItem('avatar', avatar);
       localStorage.setItem('jwtToken', jwt);
@@ -68,6 +71,7 @@ export default {
     },
     Logout() {
       localStorage.removeItem('id');
+      localStorage.removeItem('discordId');
       localStorage.removeItem('name');
       localStorage.removeItem('avatar');
       localStorage.removeItem('jwtToken');
@@ -179,6 +183,9 @@ export default {
   }
   h3 {
     font-size: var(--variant-size);
+  }
+  ul{
+    list-style: none;
   }
 
   #app {
