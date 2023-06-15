@@ -134,7 +134,7 @@ export default {
     --mode-color: #{map-get($theme, mode)};
     --mode-shadow-color: #{map-get($theme, modeShadow)};
     --mode-invert-color: #{map-get($theme, modeInvert)};
-    --mode-invert-shadow-color: #{map-get($theme, modeInvertShadow)};
+    --mode-invert-shadow-color: #{map-get($theme, modeInvertShadow)}; 
   }
 
   :root{
