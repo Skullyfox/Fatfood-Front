@@ -253,6 +253,10 @@ export default {
                 </div>
             </div>
         </div>
+        <div class="mobileAdvert">
+            <h2>La création de recettes n'est disponible que sur ordinateur pour le moment.</h2>
+            <router-link to="/" class="Link">Retourner à l'accueil</router-link>
+        </div>
     </div>
 </template>
 
@@ -266,6 +270,9 @@ export default {
     .creationContainer {
         display: grid;
 
+        @media screen and (max-width: 1024px){
+            display: none;
+        }
         .leftContainer {
             .card {
                 transition: all 1s;
@@ -483,6 +490,22 @@ export default {
                         }
                     }
                 }
+            }
+        }
+    }
+    .mobileAdvert {
+        display: none;
+        @media screen and (max-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            .Link{
+                background-color: var(--primary-color);
+                border: 0;
+                padding: 15px 35px;
+                border-radius: 20px;
             }
         }
     }

@@ -44,6 +44,12 @@ export default {
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
         list-style: none;
+        @media screen and (max-width: 1024px){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media screen and (max-width: 768px){
+            grid-template-columns: minmax(200px,300px);
+        }
         .item{
             display: grid;
             grid-template-rows: 1fr minmax(2fr 150px);

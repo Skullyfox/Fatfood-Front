@@ -23,15 +23,15 @@ import { useHead } from '@vueuse/head';
         <div class="content">
             <ul>
                 <li>
-                    <h2>Avatar : </h2> 
+                    <h3>Avatar : </h3> 
                     <img :src="authData.avatar" />
                 </li>
                 <li>
-                    <h2>Pseudonyme : </h2> 
+                    <h3>Pseudonyme : </h3> 
                     <p>{{ authData.name }}</p>
                 </li>
                 <li>
-                    <h2>Email : </h2>
+                    <h3>Email : </h3>
                     <p>{{ authData.email }}</p>
                 </li>
             </ul>
@@ -63,6 +63,9 @@ import { useHead } from '@vueuse/head';
                         font-weight: var(--medium-weight);
                         text-align: justify;
                     }
+                }
+                @media screen and (max-width: 1024px) {
+                    align-items: flex-start;
                 }
             }
         }

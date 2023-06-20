@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import qs from "qs";
+import LoadingComponent from "@/components/LoadingComponent.vue";
 
 export default {
     name: "LoggedView",
@@ -10,6 +11,9 @@ export default {
             name: "",
             avatar: "",
         }
+    },
+    components: {
+        LoadingComponent,
     },
     methods: {
         getInformations() {
@@ -92,7 +96,7 @@ export default {
 <template>
     <div class="loggedView">
         {{ getInformations() }}
-        <h1>Connexion en cours ...</h1>
+        <LoadingComponent />
     </div>
 </template>
 

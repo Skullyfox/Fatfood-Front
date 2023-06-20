@@ -47,7 +47,10 @@ export default {
         list-style: none;
         @media screen and (max-width: 1024px) {
             grid-template-columns: repeat(2, 1fr);
-            padding: 50px 100px;
+            padding: 50px 80px;
+            max-height: calc(100vh - 150px);
+            overflow-x: none;
+            overflow-y: scroll;
         }
         @media screen and (max-width: 768px) {
             grid-template-columns: minmax(200px, 350px);

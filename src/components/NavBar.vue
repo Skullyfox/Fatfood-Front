@@ -54,7 +54,7 @@
                 <router-link to="/recettes">Recettes Tendances</router-link>
               </div>
             </div>
-            <router-link to="/about">En Savoir Plus</router-link>
+              <router-link to="/about">À Propos</router-link>
           </div>
         </div>
         <div class="navbar-logo">
@@ -100,12 +100,12 @@
         </li>
         <li>
           <h2>
-            <router-link to="/about" @click="mobileMenu">{{ isAuth }}</router-link>
+              <router-link to="/create" @click="mobileMenu">Créer ton Burger</router-link>
           </h2>
         </li>
         <li>
           <h2>
-            <router-link to="/product" @click="mobileMenu">Product</router-link>
+              <router-link to="/recettes" @click="mobileMenu">Recettes Tendances</router-link>
           </h2>
         </li>
         <li v-if="isAuth">
@@ -120,7 +120,7 @@
         </li>
         <li v-if="!isAuth">
           <h2>
-            <a :href="discordAuthLink">Se connecter</a>
+            <a :href="discordAuthLink"  @click="mobileMenu">Se connecter</a>
           </h2>
         </li>
       </ul> 

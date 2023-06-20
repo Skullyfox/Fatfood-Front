@@ -1,6 +1,7 @@
 <script>
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
+/* import LoadingComponent from '@/components/LoadingComponent.vue'; TODO */ 
 import { useFavicon } from '@vueuse/core'
 
 const icon = useFavicon();
@@ -11,11 +12,13 @@ export default {
   components: {
     NavBar,
     Footer,
+    /*LoadingComponent, TODO*/
   },
   data() {
     return {
       theme: 'default',
       isAuth: false,
+      isLoading: false,
       authData: {}
     }
   },
@@ -90,9 +93,18 @@ export default {
       @logout="Logout"
       :isAuth="isAuth" 
       :authData="authData" />
-    <router-view 
-      @authentified="Auth"
-      :authData="authData"/>
+      <!--
+        TODO
+      <router-view 
+        v-if="isLoading"
+        @authentified="Auth"
+        :authData="authData"/>
+        <LoadingComponent v-else />
+      -->
+      <router-view 
+        @authentified="Auth"
+        :authData="authData"/>
+
     <Footer />
   </div>
 </template>

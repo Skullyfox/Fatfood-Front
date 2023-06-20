@@ -49,12 +49,12 @@
           <div class="left">
             <h3>Création :</h3>
             <p>Avec notre service de création de burger, vous pouvez composer le burger de vos rêves en choisissant parmi une variété d'ingrédients frais et savoureux. Nous offrons une expérience personnalisée de la restauration rapide, pour que vous puissiez manger ce que vous aimez, exactement comme vous le voulez.</p>
-            <router-link to="/">Créer maintenant</router-link>
+            <router-link to="/create">Créer maintenant</router-link>
           </div>
           <div class="right">
             <h3>Choisir une tendance :</h3>
             <p>Découvrez les recettes tendances de la communauté FatFood, votées et approuvées par nos clients. Notre page tendance vous permet de découvrir de nouvelles idées de burgers personnalisés, pour vous aider à trouver l'inspiration et à varier vos repas. Rejoignez notre communauté de passionnés de burgers et partagez vos recettes préférées.</p>
-            <router-link to="/">Parcourir les tendances</router-link>
+            <router-link to="/recettes">Parcourir les tendances</router-link>
           </div>
         </div>
       </div>

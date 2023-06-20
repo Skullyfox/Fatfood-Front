@@ -63,7 +63,16 @@ import { useHead } from '@vueuse/head';
         .RecipesList {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 50px;
+            max-height: calc(100vh - 150px);
+            overflow-y: scroll;
+            overflow-x: none;
+            @media screen and (max-width: 1024px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            @media screen and (max-width: 768px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            gap: 20px;
             padding: 50px 0;
             list-style: none;
             .item{
