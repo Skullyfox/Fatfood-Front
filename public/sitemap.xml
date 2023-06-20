@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://example.com/</loc>
+    <loc>https://fatfood.creartcom.fr/</loc>
   </url>
   <url>
-    <loc>https://example.com/logged</loc>
+    <loc>https://fatfood.creartcom.fr/logged</loc>
   </url>
   <url>
-    <loc>https://example.com/dashboard</loc>
+    <loc>https://fatfood.creartcom.fr/dashboard</loc>
   </url>
   <url>
-    <loc>https://example.com/recettes</loc>
+    <loc>https://fatfood.creartcom.fr/recettes</loc>
   </url>
   <url>
-    <loc>https://example.com/product</loc>
+    <loc>https://fatfood.creartcom.fr/product</loc>
   </url>
   <url>
-    <loc>https://example.com/about</loc>
+    <loc>https://fatfood.creartcom.fr/about</loc>
   </url>
   <url>
-    <loc>https://example.com/create</loc>
+    <loc>https://fatfood.creartcom.fr/create</loc>
   </url>
   <url>
-    <loc>https://example.com/conditionsdevente</loc>
+    <loc>https://fatfood.creartcom.fr/conditionsdevente</loc>
   </url>
   <url>
-    <loc>https://example.com/notFound</loc>
+    <loc>https://fatfood.creartcom.fr/notFound</loc>
   </url>
 </urlset>
