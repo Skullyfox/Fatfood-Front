@@ -32,7 +32,7 @@ import { useHead } from '@vueuse/head';
                 </li>
                 <li>
                     <h2>Email : </h2>
-                    <p>{{  authData.email }}</p>
+                    <p>{{ authData.email }}</p>
                 </li>
             </ul>
         </div>

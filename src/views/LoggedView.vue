@@ -92,11 +92,13 @@ export default {
 <template>
     <div class="loggedView">
         {{ getInformations() }}
+        <h1>Connexion en cours ...</h1>
     </div>
 </template>
 
 <style scoped lang="scss">
 .loggedView {
     padding-top: 200px;
+    min-height: calc(100vh - 200px);
 }
 </style>

@@ -45,6 +45,15 @@ export default {
         gap: 50px;
         padding: 50px 0;
         list-style: none;
+        @media screen and (max-width: 1024px) {
+            grid-template-columns: repeat(2, 1fr);
+            padding: 50px 100px;
+        }
+        @media screen and (max-width: 768px) {
+            grid-template-columns: minmax(200px, 350px);
+            justify-content: center;
+            gap: 20px;
+        }
         .item{
             display: grid;
             grid-template-rows: 1fr minmax(2fr 150px);

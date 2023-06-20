@@ -28,6 +28,9 @@ import { useHead } from '@vueuse/head';
         padding: 150px var(--center-padding) 0;
         h1{
             text-align: start;
+            @media  screen and (max-width: 1024px) {
+              padding-left: 30px;
+            }
         }
     }
 </style>
