@@ -2,11 +2,7 @@
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
 /* import LoadingComponent from '@/components/LoadingComponent.vue'; TODO */ 
-import { useFavicon } from '@vueuse/core';
-import Icon from '@/assets/img/icon.png';
 
-const icon = useFavicon();
-icon.value = Icon;
 //import axios from 'axios';
 
 export default {
