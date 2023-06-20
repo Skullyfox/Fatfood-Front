@@ -22,7 +22,7 @@ import { useHead } from '@vueuse/head';
                     ? await axios.get('http://127.0.0.1:5200/api/users/me?populate=*', {
                         headers: {Authorization: `Bearer ${this.authData.token}`}
                     }) 
-                    : await axios.get('https://fatfood-api.creartcom.fr/users/me?populate=*', {
+                    : await axios.get('https://fatfood-api.creartcom.fr/api/users/me?populate=*', {
                         headers: {Authorization: `Bearer ${this.authData.token}`}
                     });
                 this.recipes = response.data.recipes;
