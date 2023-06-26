@@ -113,6 +113,12 @@ export default {
     async mounted() {
         useHead({
             title: 'Création | Fatfood',
+            meta: [
+                {
+                    name: 'description',
+                    content: "Découvrez une infinité de combinaisons de saveurs avec FatFood. Choisissez vos ingrédients préférés et créez le burger de vos rêves. Le plaisir de la personnalisation n'a jamais été aussi délicieux !"
+                }
+            ]
         })
         try {
             const url = process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:5200/api' : 'https://fatfood-api.creartcom.fr/api';
@@ -270,9 +276,10 @@ export default {
     .creationContainer {
         display: grid;
 
-        @media screen and (max-width: 1024px){
+        @media screen and (max-width: 1024px) {
             display: none;
         }
+
         .leftContainer {
             .card {
                 transition: all 1s;
@@ -493,15 +500,18 @@ export default {
             }
         }
     }
+
     .mobileAdvert {
         display: none;
+
         @media screen and (max-width: 1024px) {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 20px;
-            .Link{
+
+            .Link {
                 background-color: var(--primary-color);
                 border: 0;
                 padding: 15px 35px;
@@ -536,5 +546,4 @@ export default {
             }
         }
     }
-}
-</style>
+}</style>
